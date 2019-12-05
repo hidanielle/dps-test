@@ -1,7 +1,7 @@
 {
-  "name": "prismic-vuejs-starter",
-  "version": "1.2.0",
-  "description": "Vue.js starter project with content managed in Prismic",
+  "name": "dps-test",
+  "version": "1.0.0",
+  "description": "DPS Test Project - A Vue.js project with content managed in Prismic",
   "license": "Apache-2.0",
   "repository": "github:prismicio/vuejs-starter",
   "author": "Prismic",
@@ -13,7 +13,6 @@
     "prismic-dom": "^2.1.0",
     "prismic-vue": "^1.3.0",
     "vue": "^2.5.16",
-    "vue-highlightjs": "^1.3.3",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

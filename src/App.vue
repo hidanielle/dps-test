@@ -1,22 +1,20 @@
 <template>
   <div id="app">
     <router-view/>
-    <footer-prismic/>
+    <footer-about/>
   </div>
 </template>
 
 <script>
-import FooterPrismic from './components/FooterPrismic.vue'
+import FooterAbout from './components/FooterAbout.vue'
 
 export default {
   name: 'App',
   components: {
-    FooterPrismic
+    FooterAbout
   }
 }
 </script>
 
 <style>
-@import "./assets/css/resetr.css";
-@import "./assets/css/prismic-edit-button.css";
 </style>
