@@ -1,0 +1,435 @@
+/*Settings*/
+$color-blue: #244290;
+$color-blue-light: #C2D3FF;
+
+$color-green: #126A5D;
+$color-green-light: #B5E5DE;
+
+$color-red: #BF3F3F;
+$color-red-light: #FFD7D7;
+
+$color-yellow: #96720F;
+$color-yellow-light: #F2E5AD;
+
+
+$color-grey: #5D5D5D;
+$color-black: #0F0F0F;
+$color-white: #ffffff;
+
+@import 'settings';
+@import '~foundation-sites/scss/foundation';
+@import 'animate';
+
+@include foundation-everything;
+
+/* Handling vue states*/
+[v-cloak] > *,
+.is-loading > * { display:none }
+[v-cloak]::before { content: "loading…" }
+
+body {
+    overflow: hidden;
+}
+
+/*Generic styles*/
+* {
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+}
+
+body {
+    font-size: rem-calc(16px);
+    line-height: unitless-calc(22, 16px);
+    @include breakpoint(medium) {
+        font-size: rem-calc(22px);
+        line-height: unitless-calc(33, 22px);
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Avenir', sans-serif;
+    transition: color 500ms ease;
+}
+
+%h1 {
+    font-size: rem-calc(36px);
+    line-height: unitless-calc(44, 36px);
+    max-width: 615px;
+    @include breakpoint(medium) {
+        font-size: rem-calc(60px);
+        line-height: unitless-calc(70, 60px);
+    }
+}
+
+%h2 {
+    font-size: rem-calc(25px);
+    line-height: unitless-calc(31, 25px);
+    max-width: 690px;
+    @include breakpoint(medium) {
+        font-size: rem-calc(41px);
+        line-height: unitless-calc(53, 41px);
+    }
+}
+
+%h3 {
+    font-size: rem-calc(28px);
+    line-height: unitless-calc(34, 28px);
+    @include breakpoint(medium) {
+        font-size: rem-calc(36px);
+        line-height: unitless-calc(30, 36px);
+    }
+}
+
+h1,
+.like-h1 {
+    @extend %h1;
+    color: $color-blue;
+}
+
+h2,
+.like-h2 {
+    @extend %h2;
+}
+
+h3,
+.like-h3 {
+    @extend %h3;
+}
+
+p {
+    max-width: 565px;
+}
+
+button {
+    cursor: pointer;
+    &:focus {
+        border: 2px dashed currentColor;
+        outline: none;
+    }
+}
+
+blockquote {
+    border: none;
+}
+
+/*Containers*/
+.site-container {
+    height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255,255,255,00.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: rem-calc(12px);
+    button {
+        color: $color-blue;
+    }
+}
+
+.main-content,
+.main-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    @include breakpoint(medium) {
+        padding: 1rem;
+    }
+}
+
+.main-content {
+    height: 70vh;
+    flex-direction: column;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    @include breakpoint(medium) {
+        height: 60vh;
+    }
+}
+
+.main-actions {
+    height: 30vh;
+    &-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*this is is a fall back, ideally would make these options be responsive so they could all stay on the same line always*/
+        flex-wrap: wrap;
+    }
+    @include breakpoint(medium) {
+        height: 40vh;
+    }
+}
+
+/*Obejcts*/
+.headline {
+    margin-top: 2rem;
+    span {
+        @extend %h2;
+        color: $color-black;
+        font-family: Times, serif;
+    }
+    cite {
+        font-size: rem-calc(18px);
+        font-style: normal;
+        &:before {
+            display: none;
+        }
+    }
+    &.is-Detailed {
+        background: #F2F2F2;
+        padding: 3rem;
+        text-align: left;
+    }
+    &-copy {
+        display: block;
+        height: 0.5rem;
+        margin-top: 2rem;
+        margin-bottom: calc(7*4px);
+        background-color: darken(#F2F2F2, 20%);
+        width: 100%;
+        box-shadow: 0 7px 0px 0 #F2F2F2, 
+                    0 14px 0px 0 darken(#F2F2F2, 20%),
+                    0 21px 0px 0 #F2F2F2,
+                    0 28px 0px 0 darken(#F2F2F2, 20%);
+    }
+}
+
+.question {
+    @extend %h3;
+    margin: 0 auto;
+}
+
+.button {
+    background: $color-white;
+    border-radius: 3em;
+    padding: 0.8rem 1rem;
+    color: $color-blue;
+    min-width: rem-calc(135px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: rem-calc(16px);
+    line-height: unitless-calc(22, 16px);
+    font-weight: 700;
+}
+
+.answer-option {
+    margin: 0 0.5rem;
+    input[type="radio"] {
+        @extend .show-for-sr;
+        + label {
+            margin: 0;
+        }
+        &:focus {
+            + label {
+                box-shadow: 0 0 0 3px $color-blue;
+            }
+        }
+    }
+    &.no-text {
+        margin: 0 0.5rem;
+    }
+    &-text {
+        @extend .button;
+        padding: 0.5rem 1rem;
+        min-width: rem-calc(80px);
+        margin-top: 1rem;
+        margin-bottom: 0;
+        .no-text & {
+            @extend .show-for-sr;
+        }
+    }
+    &-icon {
+        display: flex;
+        width: rem-calc(75px);
+        height: rem-calc(75px);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        justify-content: center;
+        align-items: center;
+        animation: wiggle 2.5s infinite ease-in-out;
+        
+    }
+    &:nth-of-type(1) {
+        .answer-option-icon {
+            animation-delay: 200ms;
+        }
+    }
+    &:nth-of-type(2) {
+        .answer-option-icon {
+            animation-delay: 400ms;
+        }
+    }
+    &:nth-of-type(3) {
+        .answer-option-icon {
+            animation-delay: 600ms;
+        }
+    }
+    &:nth-of-type(4) {
+        .answer-option-icon {
+            animation-delay: 800ms;
+        }
+    }
+    &:nth-of-type(5) {
+        .answer-option-icon {
+            animation-delay: 1000ms;
+        }
+    }
+}
+
+.icon-animated {
+    position: relative;
+    margin-right: 0.5rem;
+    .icon {
+        &-face {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+        }
+        &-head {
+        }
+    }
+}
+
+/*Themes*/
+
+.t-blue {
+    %h3 {
+        color: $color-blue;
+    }
+    .bg {
+        svg {
+            path {
+                fill: $color-blue-light;
+            }
+        }
+    }
+}
+
+.t-green {
+    %h3 {
+        color: $color-green;
+    }
+    .bg {
+        svg {
+            path {
+                fill: $color-green-light;
+            }
+        }
+    }
+}
+
+.t-red {
+    %h3 {
+        color: $color-red;
+    }
+    .bg {
+        svg {
+            path {
+                fill: $color-red-light;
+            }
+        }
+    }
+}
+
+.t-yellow {
+    %h3 {
+        color: $color-yellow;
+    }
+    .bg {
+        svg {
+            path {
+                fill: $color-yellow-light;
+            }
+        }
+    }
+}
+
+
+/*Width of hill bg to take up 3 screens*/
+.bg {
+    overflow: hidden;
+    &-1,
+    &-2 {
+        position: absolute;
+        height: 50vh;
+        width: 300%;
+        z-index: -1;
+        left: 0;
+        bottom: 0;
+        animation: slideUp 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        animation-fill-mode: both;
+        svg {
+            height: 100%;
+            path {
+                fill: $color-blue-light;
+                transition: fill 500ms ease;
+            }
+        }
+    }
+    &-1 {
+        opacity: 0.8;
+    }
+    &-2 {
+        opacity: 0.6;
+        // left: -60%;
+        transform: fl;
+        animation-delay: 0.1s;
+        svg {
+            transform: scaleX(-2);
+        }
+    }
+}
+
+/*Animations*/
+.bounce-enter-active {
+    animation: bounce-in .5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in .5s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+@keyframes slideUp {
+    0% {
+		transform: translateY(100%);
+    }
+    
+    
+	100% {
+		transform: translateY(20%);
+	}
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   80% { transform: rotate(0deg); }
+   85% { transform: rotate(5deg); }
+   95% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}

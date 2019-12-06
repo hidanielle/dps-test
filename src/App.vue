@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="site-container">
     <router-view/>
     <footer-about/>
   </div>
@@ -16,6 +16,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import "./assets/styles/app.scss";
 </style>
