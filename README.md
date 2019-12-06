@@ -32,11 +32,3 @@ npm run build
 ``` bash
 npm run lint
 ```
-
-## To do
-* Add scss support
-* Some css animations
-* Some POSTS if possible 
-* Ensure password for Prismic login to share
-* Clean up readme stuff
-* Remove all tutorial files
